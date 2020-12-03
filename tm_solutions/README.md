@@ -4,9 +4,9 @@ Day 1 solution. Trying Elixir for the first time. Solutions are not the most eff
 
 Compile and open iex session: `mix compile && iex -S mix`
 
-For problem 1: `TM.get_multiple_from_file("input.txt", 2)`
+For problem 1: `Day1.part1`
 
-For problem 2: `TM.get_multiple_from_file("input.txt", 3)`
+For problem 2: `Day1.part2`
 
 ## Installation
 

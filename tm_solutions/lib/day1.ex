@@ -1,7 +1,12 @@
-defmodule TM do
-  @moduledoc """
-  Documentation for `TM`.
-  """
+defmodule Day1 do
+
+  def part1() do
+    get_multiple_from_file("inputs/day1.txt", 2)
+  end
+
+  def part2() do
+    get_multiple_from_file("inputs/day1.txt", 3)
+  end
 
   def get_multiple_from_file(name, num) when is_bitstring(name) do
     {:ok, contents} = File.read(name)
