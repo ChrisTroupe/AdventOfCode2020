@@ -8,6 +8,8 @@ For problem 1: `Day1.part1`
 
 For problem 2: `Day1.part2`
 
+> Replace `Day1` with the respective day (i.e. `Day2.part1`, `Day20.part2`)
+
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
