@@ -71,8 +71,7 @@ defmodule Day2 do
   defp letter_at_target?(<<l::utf8, rest::binary>>, {t1, t2}, l, t1, _) do
     letter_at_target?(rest, {t1, t2}, l, t1 + 1, true)
   end
-  defp letter_at_target?(<<l::utf8, _::binary>>, {_, t2}, l, t2, true), do: false
-  defp letter_at_target?(<<l::utf8, _::binary>>, {_, t2}, l, t2, false), do: true
+  defp letter_at_target?(<<l::utf8, _::binary>>, {_, t2}, l, t2, met), do: !met
   defp letter_at_target?(<<_::utf8, rest::binary>>, targets, l, curr_pos, met) do
       letter_at_target?(rest, targets, l, curr_pos + 1, met)
   end
