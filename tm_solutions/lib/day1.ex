@@ -43,25 +43,20 @@ defmodule Day1 do
     end
   end
 
-  defp get_matching_nums([], _), do: {nil, nil}
-  defp get_matching_nums([head | tail], goal) do
-    result = get_matching_num(head, tail, goal)
-    if result do
-      {head, result}
+  # Part 1 Logic
+  defp get_matching_nums(num_list, goal, cache \\ %MapSet{})
+  defp get_matching_nums([], _goal, _cache), do: {nil, nil}
+  defp get_matching_nums([head | tail], goal, cache) do
+    has_match = MapSet.member?(cache, goal - head)
+    cache = MapSet.put(cache, head)
+    if has_match do
+      {goal - head, head}
     else
-      get_matching_nums(tail, goal)
+      get_matching_nums(tail, goal, cache)
     end
   end
 
-  defp get_matching_num(_, [], _), do: nil
-  defp get_matching_num(base, [head | tail], goal) do
-    if base + head == goal do
-      head
-    else
-      get_matching_num(base, tail, goal)
-    end
-  end
-
+  # Part 2 Logic
   defp find_matching_pair([]), do: {nil, nil, nil}
   defp find_matching_pair([head | tail]) do
     goal = 2020 - head
