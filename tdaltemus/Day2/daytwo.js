@@ -20,9 +20,9 @@ const getPasswordAndPolicy = (line) => {
   // Get amount and letter
   const [amount, letter] = policy.split(" ");
   // Get low and high amounts
-  const [low, high] = amount.split("-");
+  const [first, second] = amount.split("-");
 
-  return [password, letter, low, high];
+  return [password, letter, first, second];
 };
 
 const evaluatePolicy1 = (line) => {
