@@ -14,8 +14,6 @@ defmodule Day7 do
 
     quant_map = load_data(bag_graph)
 
-    IO.inspect(quant_map)
-
     get_all_bags_inside(bag_graph, quant_map, ["shiny gold"], 0)
   end
 
@@ -84,9 +82,8 @@ defmodule Day7 do
   defp get_all_bags_inside(graph, quant_map, [bag | process_bags], acc) do
     bags_inside = :digraph.out_neighbours(graph, bag)
 
-
+    # Sum the number of bags directly inside
     total_inside = bags_inside
-    # |> inspect_stream()
     |> Stream.map(fn in_bag -> quant_map[bag][in_bag] end)
     |> Stream.filter(fn
       nil -> false
@@ -94,15 +91,11 @@ defmodule Day7 do
     end)
     |> Enum.sum
 
+    # Duplicate the bags inside based on needed quantity
+    bags_inside = (for in_bag <- bags_inside, in_bag != nil, do: List.duplicate(in_bag, quant_map[bag][in_bag]))
+    |> List.flatten
+
     get_all_bags_inside(graph, quant_map, bags_inside ++ process_bags, acc + total_inside)
-  end
-
-  def inspect_stream(stream) do
-    stream
-    |> Enum.to_list()
-    |> IO.inspect()
-
-    stream
   end
 
 end
