@@ -44,9 +44,9 @@ defmodule Day1 do
   end
 
   # Part 1 Logic
-  defp get_matching_nums(num_list, goal, cache \\ %MapSet{})
-  defp get_matching_nums([], _goal, _cache), do: {nil, nil}
-  defp get_matching_nums([head | tail], goal, cache) do
+  def get_matching_nums(num_list, goal, cache \\ %MapSet{})
+  def get_matching_nums([], _goal, _cache), do: {nil, nil}
+  def get_matching_nums([head | tail], goal, cache) do
     has_match = MapSet.member?(cache, goal - head)
     cache = MapSet.put(cache, head)
     if has_match do
