@@ -59,7 +59,6 @@ defmodule Day10 do
   end
   defp get_final_combos([head | tail], combo_map) do
     combos = sum_upper_combos(head, combo_map)
-    IO.inspect {head, combos}
 
     combo_map = Map.put(combo_map, head, combos)
 
